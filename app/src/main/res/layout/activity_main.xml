@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TableLayout
-        android:id="@+id/tableLayout"
+        android:id="@+id/grid"
         android:layout_width="428dp"
         android:layout_height="343dp"
         android:layout_marginBottom="16dp"
@@ -928,10 +928,11 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
+        android:onClick="clearText"
         android:text="@string/button_clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/grid" />
 
     <Button
         android:id="@+id/solve"
@@ -940,9 +941,10 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="44dp"
         android:layout_marginTop="16dp"
+        android:onClick="solvePuzzle"
         android:text="@string/button_solve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/grid" />
 
 </android.support.constraint.ConstraintLayout>
