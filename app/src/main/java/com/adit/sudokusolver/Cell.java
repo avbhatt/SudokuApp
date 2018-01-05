@@ -10,6 +10,7 @@ class Cell {
     private int guessValue;
     private Boolean guessSet;
     private Boolean solved;
+    private Boolean input;
     private Stack<HashSet<Integer>> guesses;
 
     public Cell(int val){
@@ -17,6 +18,15 @@ class Cell {
         set = val != 0;
         guesses = new Stack<>();
         solved = false;
+        input = false;
+    }
+
+    public Cell(int val, Boolean in){
+        value = val;
+        set = val != 0;
+        guesses = new Stack<>();
+        solved = false;
+        input = in;
     }
 
     public Integer getValue() {
@@ -62,6 +72,8 @@ class Cell {
     public Boolean getSolved(){
         return solved;
     }
+
+    public Boolean getInput() { return input; }
 
     public HashSet<Integer> getGuess() {
         if (guesses.empty()){

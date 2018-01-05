@@ -1,5 +1,6 @@
 package com.adit.sudokusolver;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int j = 0; j < cols; j++) {
                     View elem = (EditText) ((TableRow) child).getVirtualChildAt(j);
                     ((EditText) elem).getText().clear();
+                    ((EditText) elem).setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.inputValues));
                 }
         }
     }
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 if ( ((EditText) elem).getText().toString().matches(""))
                     input[i][j] = new Cell(0);
                 else
-                    input[i][j] = new Cell(Integer.parseInt(((EditText) elem).getText().toString()));
+                    input[i][j] = new Cell(Integer.parseInt(((EditText) elem).getText().toString()), Integer.parseInt(((EditText) elem).getText().toString()) > 0);
             }
         }
         Puzzle puzz = new Puzzle(input);
@@ -54,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
             int cols = ((TableRow) child).getVirtualChildCount();
             for (int j = 0; j < cols; j++) {
                 View elem = (EditText) ((TableRow) child).getVirtualChildAt(j);
-                ((EditText) elem).setText(""+input[i][j].getValue());
+                if (!input[i][j].getInput()) {
+                    ((EditText) elem).setText("" + input[i][j].getValue());
+                    ((EditText) elem).setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.answerValues));
+                }
+
             }
         }
     }
